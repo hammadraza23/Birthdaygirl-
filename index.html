@@ -1,1 +1,786 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something for Nimra ✨</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #e8c77e;
+  --gold-light: #fff0bd;
+  --purple: #a78bfa;
+  --pink: #f5b5d4;
+  --white: #f8f5ff;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, #281a43 0%, #110d1e 45%, #08070d 100%);
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #ffffff90 50%, transparent),
+    radial-gradient(2px 2px at 80% 30%, #d8b4fe90 50%, transparent),
+    radial-gradient(1px 1px at 45% 70%, #ffffff80 50%, transparent),
+    radial-gradient(2px 2px at 90% 85%, #f5b5d480 50%, transparent);
+  background-size: 180px 180px;
+  pointer-events: none;
+  opacity: .7;
+  z-index: -1;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  bottom: -30px;
+  animation: floatUp linear infinite;
+  opacity: 0;
+  color: #d8b4fe;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: .6; }
+  85% { opacity: .35; }
+  100% {
+    transform: translateY(-110vh) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 780px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 24px 18px 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.brand {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.page-counter {
+  color: #bcb2d5;
+  font-size: 12px;
+}
+
+.progress {
+  height: 3px;
+  background: #ffffff12;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 35px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, var(--purple), var(--gold));
+  border-radius: 10px;
+  transition: width .5s ease;
+}
+
+.page {
+  display: none;
+  animation: pageIn .55s ease;
+  flex: 1;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.content {
+  text-align: center;
+  margin: auto 0;
+  padding: 12px 4px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.hero-icon {
+  font-size: 65px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 25px #a78bfa50);
+  animation: bob 3s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+h1 {
+  font-size: clamp(25px, 6vw, 43px);
+  line-height: 1.65;
+  font-weight: 600;
+  background: linear-gradient(120deg, #fff, var(--gold-light), #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: clamp(20px, 5vw, 30px);
+  line-height: 1.8;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 15px;
+}
+
+.urdu {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  direction: rtl;
+  line-height: 2.5;
+  font-size: 17px;
+}
+
+.subtitle {
+  color: #c7bddb;
+  font-size: 13px;
+  line-height: 2;
+  max-width: 550px;
+  margin: 0 auto 25px;
+}
+
+.card {
+  background: linear-gradient(145deg, #ffffff0b, #ffffff04);
+  border: 1px solid #d8b4fe25;
+  border-radius: 20px;
+  padding: 23px 18px;
+  margin: 18px 0;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 15px 45px #00000025;
+}
+
+.gold-card {
+  border-color: #e8c77e40;
+  background: linear-gradient(145deg, #e8c77e0b, #ffffff03);
+}
+
+.card-title {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #e1d9ee;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.rule {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  margin: 14px 0;
+  padding: 13px;
+  background: #ffffff05;
+  border-radius: 13px;
+  border: 1px solid #ffffff0a;
+}
+
+.rule-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.rule-text {
+  color: #ded5ec;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.rule-text strong {
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.quote {
+  font-size: 14px;
+  line-height: 2.2;
+  color: #e8dff6;
+  padding: 5px;
+}
+
+.big-quote {
+  font-size: 25px;
+  color: var(--gold);
+  margin: 7px 0;
+}
+
+.divider {
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px auto;
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: .25s;
+}
+
+.main-btn {
+  padding: 13px 23px;
+  border-radius: 30px;
+  color: #16101f;
+  font-size: 12px;
+  font-weight: 600;
+  background: linear-gradient(120deg, var(--gold-light), var(--gold));
+  box-shadow: 0 5px 25px #e8c77e20;
+}
+
+.main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px #e8c77e40;
+}
+
+.back-btn {
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: #ffffff0a;
+  color: #c9bddb;
+  border: 1px solid #ffffff18;
+  font-size: 12px;
+}
+
+.small-note {
+  font-size: 10px;
+  color: #8f83a7;
+  margin-top: 18px;
+}
+
+.complaint {
+  padding: 17px;
+  margin: 12px 0;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f5b5d408, #a78bfa08);
+  border: 1px solid #f5b5d420;
+  text-align: left;
+}
+
+.complaint .number {
+  color: var(--pink);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.complaint h3 {
+  font-size: 13px;
+  color: #f0d5e7;
+  margin-bottom: 6px;
+}
+
+.complaint p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #cfc3de;
+}
+
+.stamp {
+  display: inline-block;
+  border: 1px solid #e8c77e50;
+  border-radius: 50px;
+  color: var(--gold);
+  padding: 8px 16px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin: 15px 0;
+  transform: rotate(-3deg);
+}
+
+.final-box {
+  border: 1px solid #e8c77e35;
+  border-radius: 23px;
+  padding: 25px 18px;
+  background: radial-gradient(ellipse at top, #e8c77e0b, transparent 75%);
+}
+
+.final-box h2 {
+  color: var(--gold-light);
+}
+
+.final-box .urdu {
+  font-size: 16px;
+}
+
+.footer {
+  text-align: center;
+  color: #786c8b;
+  font-size: 10px;
+  margin-top: 25px;
+}
+
+@media (max-width: 480px) {
+  .wrapper { padding: 20px 15px 25px; }
+  .progress { margin-bottom: 23px; }
+  .card { padding: 19px 14px; }
+  .urdu { font-size: 15px; }
+  .main-btn { padding: 12px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<div class="wrapper">
+
+  <div class="topbar">
+    <div class="brand">A LITTLE SOMETHING ✦</div>
+    <div class="page-counter" id="counter">01 / 05</div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+
+  <!-- PAGE 1 -->
+  <section class="page active" id="page1">
+    <div class="content">
+
+      <div class="eyebrow">PRIVATE FRIENDSHIP EDITION</div>
+
+      <div class="hero-icon">🎁</div>
+
+      <h1>ایک چھوٹا سا<br>سرپرائز!</h1>
+
+      <p class="subtitle urdu">
+        یہ کوئی عام ویب سائٹ نہیں…
+        یہ ایک خاص انسان کے لیے تیار کیا گیا
+        ایک چھوٹا سا ڈیجیٹل تحفہ ہے۔
+      </p>
+
+      <div class="card gold-card">
+        <div class="card-title">ATTENTION PLEASE ✦</div>
+        <p class="urdu">
+          محترمہ نمرہ تبسم!
+          آپ کو ایک خصوصی تقریب میں مدعو کیا جاتا ہے،
+          جہاں آپ کی دوستی، آپ کی شرارتوں،
+          اور آپ کی اہمیت کا ذکر ہونے والا ہے۔
+        </p>
+      </div>
+
+      <div class="stamp">VIP ACCESS GRANTED</div>
+
+      <p class="small-note">
+        Warning: آگے cute باتیں، تھوڑی بے عزتی اور کافی ساری مخلصی ہے 😂
+      </p>
+
+      <div class="btn-row">
+        <button class="main-btn" onclick="goTo(2)">
+          چلیں، اندر آتے ہیں ✨
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="page" id="page2">
+    <div class="content">
+
+      <div class="eyebrow">OFFICIAL FRIENDSHIP DOCUMENT</div>
+
+      <div class="hero-icon">📜</div>
+
+      <h2>ہماری دوستی کے<br>کچھ عجیب اصول 😂</h2>
+
+      <div class="card">
+
+        <div class="rule">
+          <div class="rule-icon">😌</div>
+          <div class="rule-text">
+            <strong>Rule No. 01 — No Formalities</strong>
+            دوستی میں شکریہ اور سوری کی گنجائش ہے،
+            لیکن ہر پانچ منٹ بعد نہیں۔
+            اتنی formalities کریں گے تو دوستی نہیں،
+            دفتر لگنے لگے گا۔
+          </div>
+        </div>
+
+        <div class="rule">
+          <div class="rule-icon">🤨</div>
+          <div class="rule-text">
+            <strong>Rule No. 02 — Mood Swings Allowed</strong>
+            کبھی ہنسنا، کبھی خاموش ہونا،
+            کبھی ناراض ہونا سب allowed ہے۔
+            لیکن دوست کو guessing game میں
+            مستقل نہ رکھا جائے، شکریہ۔
+          </div>
+        </div>
+
+        <div class="rule">
+          <div class="rule-icon">😂</div>
+          <div class="rule-text">
+            <strong>Rule No. 03 — Drama Limit</strong>
+            تھوڑا ڈرامہ برداشت ہے،
+            زیادہ ڈرامے پر دوست کو ہنسنے کی
+            قانونی اجازت ہوگی۔
+          </div>
+        </div>
+
+        <div class="rule">
+          <div class="rule-icon">🤝</div>
+          <div class="rule-text">
+            <strong>Rule No. 04 — Friendship Renewal</strong>
+            اس دوستی کی expiry date نہیں ہے۔
+            Renewal ہر سال خود بخود ہوگی،
+            کسی OTP کی ضرورت نہیں۔
+          </div>
+        </div>
+
+      </div>
+
+      <p class="subtitle">
+        Terms & Conditions پڑھ لیے؟
+        اب واپس جانے کا کوئی فائدہ نہیں،
+        یہ دوستی پہلے ہی دل میں save ہے۔ 😂
+      </p>
+
+      <div class="btn-row">
+        <button class="back-btn" onclick="goTo(1)">← واپس</button>
+        <button class="main-btn" onclick="goTo(3)">اگلا سرپرائز →</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="page" id="page3">
+    <div class="content">
+
+      <div class="eyebrow">FRIENDSHIP COMPLAINT DEPARTMENT</div>
+
+      <div class="hero-icon">📝</div>
+
+      <h2>محترمہ نمرہ کے خلاف<br>چند شکایات 😂</h2>
+
+      <p class="subtitle">
+        یہ شکایات انتہائی سنجیدگی سے لکھی گئی ہیں…
+        یعنی بالکل بھی سنجیدگی سے نہیں۔
+      </p>
+
+      <div class="complaint">
+        <div class="number">COMPLAINT #01</div>
+        <h3>ضرورت سے زیادہ خاص ہونے کا الزام</h3>
+        <p>
+          آپ کو اطلاع دی جاتی ہے کہ آپ اپنی اہمیت
+          کچھ زیادہ ہی بڑھا چکی ہیں۔
+          اب اس کا حل ہمارے پاس بھی نہیں۔ 😂
+        </p>
+      </div>
+
+      <div class="complaint">
+        <div class="number">COMPLAINT #02</div>
+        <h3>دماغ خراب کرنے کی مستقل عادت</h3>
+        <p>
+          کبھی باتوں سے، کبھی شرارتوں سے،
+          کبھی اپنی معصوم حرکتوں سے۔
+          اور پھر ایسے بننا جیسے کچھ کیا ہی نہیں۔
+        </p>
+      </div>
+
+      <div class="complaint">
+        <div class="number">COMPLAINT #03</div>
+        <h3>دوستی میں VIP پروٹوکول</h3>
+        <p>
+          آپ کو عام دوستوں والی category میں
+          رکھا ہی نہیں جا سکتا۔
+          اس لیے آپ کا الگ department بنایا گیا ہے۔
+        </p>
+      </div>
+
+      <div class="card gold-card">
+        <div class="card-title">FINAL VERDICT</div>
+        <p class="urdu">
+          تمام شکایات کے باوجود،
+          آپ کو دوستی سے برخاست نہیں کیا جاتا۔
+          بلکہ عمر بھر کے لیے مستقل ملازمت دے دی جاتی ہے۔ 😂
+        </p>
+        <div class="big-quote">♥</div>
+        <p><strong>Dismissal Rejected. Friendship Approved.</strong></p>
+      </div>
+
+      <div class="btn-row">
+        <button class="back-btn" onclick="goTo(2)">← واپس</button>
+        <button class="main-btn" onclick="goTo(4)">اب تھوڑی سی دل کی بات…</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="page" id="page4">
+    <div class="content">
+
+      <div class="eyebrow">A NOTE FROM THE HEART</div>
+
+      <div class="hero-icon">💜</div>
+
+      <h2>مذاق اپنی جگہ…<br>لیکن ایک بات سچ ہے</h2>
+
+      <div class="card gold-card">
+
+        <p class="urdu quote">
+          نمرہ، زندگی میں بہت سے لوگ ملتے ہیں،
+          کچھ چند باتوں کے لیے،
+          کچھ چند دنوں کے لیے،
+          اور کچھ ایسے ہوتے ہیں جن کی موجودگی
+          زندگی کے عام دنوں کو بھی خاص بنا دیتی ہے۔
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="urdu quote">
+          میں ہمیشہ یہ نہیں کہہ پاتا کہ
+          کسی کی دوستی میرے لیے کتنی اہم ہے،
+          لیکن مخلص رشتوں کی قدر دل میں بہت ہوتی ہے۔
+          تمہاری دوستی بھی انہی خوبصورت رشتوں میں سے ہے۔
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="urdu quote">
+          میری دعا ہے کہ تم زندگی میں کبھی
+          اپنے آپ کو تنہا، کم اہم یا بے قدر محسوس نہ کرو۔
+          تمہارے حصے میں ایسے لوگ آئیں
+          جو تمہاری قدر کریں،
+          تمہیں سمجھیں،
+          اور تمہاری خوشیوں میں دل سے خوش ہوں۔
+        </p>
+
+      </div>
+
+      <div class="card">
+        <div class="big-quote">“</div>
+        <p class="urdu quote">
+          مخلص دوستی کی خوبصورتی یہ نہیں
+          کہ ہر وقت بات ہو،
+          بلکہ یہ ہے کہ دل میں عزت،
+          خیرخواہی اور دعا باقی رہے۔
+        </p>
+        <div class="big-quote">”</div>
+      </div>
+
+      <p class="subtitle urdu">
+        اور ہاں… کبھی میری کسی بات سے دل دکھے
+        تو خاموشی سے فاصلے بڑھانے کے بجائے
+        بتا دیا کرنا۔
+        مخلص رشتے بات کرنے سے بہتر ہوتے ہیں۔
+      </p>
+
+      <div class="btn-row">
+        <button class="back-btn" onclick="goTo(3)">← واپس</button>
+        <button class="main-btn" onclick="goTo(5)">آخری صفحہ 💌</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGE 5 -->
+  <section class="page" id="page5">
+    <div class="content">
+
+      <div class="eyebrow">THE MOST SPECIAL PAGE ✦</div>
+
+      <div class="hero-icon">🎂</div>
+
+      <h1>Happy Birthday<br>Nimra! ✨</h1>
+
+      <div class="stamp">26 NOVEMBER · YOUR DAY</div>
+
+      <div class="final-box">
+
+        <h2>سالگرہ مبارک ہو! 💜</h2>
+
+        <p class="urdu quote">
+          دعا ہے تمہاری زندگی خوشیوں سے بھری رہے،
+          تمہارے چہرے کی مسکراہٹ کبھی کم نہ ہو،
+          تم جو خواب دیکھو وہ پورے ہوں،
+          اور ہر آنے والا سال تمہارے لیے
+          پچھلے سال سے زیادہ خوبصورت ہو۔
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="urdu quote">
+          ہمیشہ ہنستی رہو،
+          ہمیشہ خوش رہو،
+          اپنے دل کی اچھی باتوں کو کبھی نہ کھونا،
+          اور زندگی کی پریشانیوں کے باوجود
+          اپنی خوبصورت شخصیت کو قائم رکھنا۔
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="urdu quote">
+          تمہارے لیے دل سے دعا ہے:
+          اللہ تمہیں صحت، سکون،
+          کامیابی، عزت اور بے شمار خوشیاں عطا فرمائے۔
+          تمہارے نصیب میں خیر لکھے،
+          تمہاری ہر جائز خواہش پوری فرمائے،
+          اور تمہیں ہمیشہ اپنی حفاظت میں رکھے۔
+          آمین۔
+        </p>
+
+        <div class="big-quote">💜</div>
+
+        <p class="urdu quote">
+          اور ہماری دوستی؟
+          اس کا کوئی آخری صفحہ نہیں۔
+          یہ ویب سائٹ ختم ہو سکتی ہے،
+          لیکن تمہارے لیے میری خیرخواہی
+          اور مخلص دوستی کی دعا ہمیشہ رہے گی۔
+        </p>
+
+      </div>
+
+      <div class="card gold-card">
+        <div class="card-title">SPECIAL FRIENDSHIP AWARD 🏆</div>
+        <h2>نمرہ تبسم</h2>
+        <p class="urdu">
+          کامیابی سے حاصل کیا گیا اعزاز:
+          <br>
+          <strong>Officially Annoying, Unofficially Very Special Friend 😂💜</strong>
+        </p>
+      </div>
+
+      <p class="small-note">
+        Made with friendship, sincerity, a little drama & unlimited duas.
+      </p>
+
+      <div class="btn-row">
+        <button class="back-btn" onclick="goTo(4)">← واپس</button>
+        <button class="main-btn" onclick="goTo(1)">شروع سے دوبارہ دیکھیں ↻</button>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    A SMALL DIGITAL GIFT · MADE WITH SINCERITY ✦
+  </div>
+
+</div>
+
+<script>
+let currentPage = 1;
+const totalPages = 5;
+
+function goTo(page) {
+  currentPage = page;
+
+  document.querySelectorAll('.page').forEach(section => {
+    section.classList.remove('active');
+  });
+
+  document.getElementById('page' + page).classList.add('active');
+
+  document.getElementById('counter').textContent =
+    String(page).padStart(2, '0') + ' / 05';
+
+  document.getElementById('progress').style.width =
+    (page / totalPages * 100) + '%';
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Floating decorative symbols
+const symbols = ['✦', '♡', '✧', '✨', '⋆', '💜'];
+
+const particleArea = document.getElementById('particles');
+
+for (let i = 0; i < 22; i++) {
+  const particle = document.createElement('span');
+  particle.className = 'particle';
+
+  particle.innerText = symbols[
+    Math.floor(Math.random() * symbols.length)
+  ];
+
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.animationDuration = (8 + Math.random() * 12) + 's';
+  particle.style.animationDelay = (Math.random() * 10) + 's';
+  particle.style.fontSize = (10 + Math.random() * 16) + 'px';
+
+  particleArea.appendChild(particle);
+}
+</script>
+
+</body>
+  </html>
